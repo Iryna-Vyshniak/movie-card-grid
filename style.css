@@ -28,6 +28,10 @@ a {
 
 ul {
   list-style-type: none;
+  padding-inline-start: 0;
+  margin-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 h1,
@@ -37,12 +41,8 @@ h3 {
 }
 
 .container {
-  display: grid;
-  grid-template-columns: 100px 1fr 300px;
-
   margin: 0 auto;
 
-  min-height: 100vh;
   width: 1200px;
   max-width: 100%;
 
@@ -51,27 +51,49 @@ h3 {
   overflow: hidden;
 }
 
+@media (width >= 58.75rem) {
+  .container {
+    display: grid;
+    grid-template-columns: 100px 1fr 250px;
+    grid-template-rows: auto;
+  }
+}
+
 .left {
   padding: 1rem;
-  background-color: #fcf0e2;
+  background-color: #faf2e9;
   text-align: center;
   border-right: 1px solid #ffffff;
 }
 
 .right {
+  display: grid;
+  grid-template-rows: auto auto;
+  row-gap: 1rem;
+
   padding: 1rem;
-  background-color: #faead8;
+  background-color: #fae8d4;
   border-left: 1px solid #ffffff;
 }
 
 .left ul {
-  padding: 0;
-  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
 }
 
 .left ul li i {
   display: block;
   margin-bottom: 10px;
+}
+
+@media (width >= 58.75rem) {
+  .left ul {
+    display: block;
+    margin-bottom: 10px;
+  }
 }
 
 .left li {
@@ -83,7 +105,11 @@ h3 {
   color: #000;
 }
 
+/* center */
 .center {
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
   padding: 20px;
 }
 
@@ -99,18 +125,16 @@ h3 {
 
   color: #060e32;
 
-  font-size: xx-large;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .hero {
   position: relative;
-}
-
-.hero img {
-  width: 100%;
-  height: 100%;
-  border-radius: 30px;
+  min-height: 620px;
+  height: auto;
+  background: url(./images/avatar-hero.jpeg) right center / cover fixed no-repeat;
+  border-radius: 20px;
   box-shadow: 0 20px 50px #b5b5b5;
 }
 
@@ -134,7 +158,7 @@ h3 {
   color: #ffa02c;
   text-shadow: 0px 1px 1px #000831, 0px 7px 10px #041150ad;
 
-  font-size: xxx-large;
+  font-size: 2rem;
   font-weight: bold;
 }
 
@@ -155,10 +179,31 @@ h3 {
   outline: none;
 }
 
+@media (width >= 58.75rem) {
+  .main-title {
+    font-size: 3rem;
+  }
+
+  .hero .title {
+    font-size: 3rem;
+  }
+}
+
+/* category */
+
 .category {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  padding: 0;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 0.625rem;
+}
+
+@media (width >= 58.75rem) {
+  .category {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 1rem;
+  }
 }
 
 .category li {
@@ -200,19 +245,159 @@ h3 {
   color: #7c4968;
 }
 
+/* heroes scene */
+
+.list-heroes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.list-heroes .item {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  align-items: center;
+  gap: 0.625rem;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  background: linear-gradient(to top, #fffcf9 50%, transparent 100%);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+@media (width >= 30rem) {
+  .list-heroes .item {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 10rem;
+    column-gap: 10px;
+    height: 10rem;
+  }
+}
+
+.list-heroes .item img {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 10rem;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 20px;
+}
+
+.list-heroes .item .content {
+  padding: 0rem 8px;
+  font-size: 0.875rem;
+}
+
+@media (width >= 58.75rem) {
+  .list-heroes .item {
+    grid-template-rows: 11.25rem;
+    height: 11.25rem;
+  }
+
+  .list-heroes .item img {
+    width: 100%;
+    height: 11.25rem;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+}
+@media (width >= 75rem) {
+  .list-heroes {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 30px;
+  }
+
+  .list-heroes .item {
+    grid-template-rows: 11.25rem;
+    height: 11.25rem;
+  }
+
+  .list-heroes .item img {
+    width: 100%;
+    height: 11.25rem;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+}
+
+/* director */
+
+.director {
+  text-align: center;
+}
+
+.director img {
+  width: 100px;
+  height: 100px;
+
+  object-fit: cover;
+  object-position: top center;
+
+  border-radius: 20px;
+  box-shadow: 0 10px 10px #b5b5b5;
+}
+
+.director .title {
+  padding: 10px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.director ul {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 30px;
+}
+
+.director .count {
+  font-size: xx-large;
+}
+
+.director li:nth-child(1) {
+  border-right: 1px solid #b5b5b5;
+}
+
+/* actor */
+
 .actor {
   padding: 20px;
 }
 
-.actor ul {
-  padding: 0;
+.actor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 }
 
 .actor li {
   display: grid;
-  grid-template-columns: 50px 1fr;
+  grid-template-columns: 50px 9.375rem;
   column-gap: 30px;
   margin-bottom: 25px;
+}
+
+@media (width >= 58.75rem) {
+  .actor {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .actor li {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    column-gap: 30px;
+    margin-bottom: 25px;
+  }
 }
 
 .actor li img {
@@ -223,11 +408,13 @@ h3 {
   border: 1px solid #ffffff;
   box-shadow: 0 10px 20px #c4beb7;
 }
+
 .actor .content .name-actor {
   margin-top: 5px;
   font-weight: bold;
   font-size: large;
 }
+
 .actor .content .name-user {
   margin-top: 5px;
   opacity: 0.6;
@@ -249,31 +436,31 @@ h3 {
   animation: showtop 500ms ease-in-out 1 forwards;
 }
 
-.delay-01 {
+.delay-1 {
   animation-delay: 100ms;
 }
-.delay-02 {
+.delay-2 {
   animation-delay: 200ms;
 }
-.delay-03 {
+.delay-3 {
   animation-delay: 300ms;
 }
-.delay-04 {
+.delay04 {
   animation-delay: 400ms;
 }
-.delay-05 {
+.delay-5 {
   animation-delay: 500ms;
 }
-.delay-06 {
+.delay-6 {
   animation-delay: 600ms;
 }
-.delay-07 {
+.delay-7 {
   animation-delay: 700ms;
 }
-.delay-08 {
+.delay-8 {
   animation-delay: 800ms;
 }
-.delay-09 {
+.delay-9 {
   animation-delay: 900ms;
 }
 .delay-10 {
@@ -323,4 +510,10 @@ h3 {
 }
 .delay-25 {
   animation-delay: 2500ms;
+}
+.delay-26 {
+  animation-delay: 2600ms;
+}
+.delay-27 {
+  animation-delay: 2700ms;
 }
